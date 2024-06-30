@@ -65,4 +65,4 @@ export const deleteTask = async (req, res, next) => {
         console.log(error)
     }
 
-};
+}
