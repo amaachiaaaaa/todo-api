@@ -13,10 +13,7 @@ dbConnection();
 app.use(todoRouter);
 
 
-// Define routes
-app.get('/', (req, res) => {
-    res.json('Task Completed');
-});
+
 
 // listening for incoming requests
 const port = 8000
