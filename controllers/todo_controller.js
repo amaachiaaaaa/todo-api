@@ -28,7 +28,7 @@ export const getTasks = async (req, res, next) => {
 // Get A Single Task
 export const getTask = async (req, res, next) => {
     try {
-        const Task = await todoModel.findById(taskid)
+        const Task = await todoModel.findByid (req.params.id)
         {
             res.status(200).send(Task)
         }
