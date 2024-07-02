@@ -9,9 +9,9 @@ todoRouter.post('/todo', addTask),
 
     todoRouter.get('/todo/:id', getTask),
 
-    todoRouter.patch('/todo/:id/', updateTask),
+    todoRouter.patch('/todo/:id', updateTask),
 
-    todoRouter.delete('todo/:id', deleteTask)
+    todoRouter.delete('/todo/:id', deleteTask)
 
     export default todoRouter; 
 

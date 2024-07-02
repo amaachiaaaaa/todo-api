@@ -5,7 +5,7 @@ export const addTask = async (req, res) => {
     try {
         console.log('request', req.body)
         const addData = await todoModel.create(req.body);
-        res.send("Task Added");
+        res.send(req.body);
 
     } catch (error) {
         console.log(error)
@@ -28,7 +28,7 @@ export const getTasks = async (req, res, next) => {
 // Get A Single Task
 export const getTask = async (req, res, next) => {
     try {
-        const Task = await todoModel.findByid (req.params.id)
+        const Task = await todoModel.findById (req.params.id)
         {
             res.status(200).send(Task)
         }
@@ -40,12 +40,11 @@ export const getTask = async (req, res, next) => {
 // Update a Task
 export const updateTask = async (req, res, next) => {
     try {
-        const status = req.params.todoStatus;
-        console.log(status)
-        const updateData = await todoModel.findByIdandUpdate(req.params.id, { todoStatus: status })
-        {
-            res.status(200).json(updateData)
-        }
+        const newData = req.body;
+        console.log('request', req.body);
+        const updateData = await todoModel.findByIdAndUpdate(req.params.id, newData, {new:true});
+         res.status(200).send(updateData)
+        
     } catch (error) {
         console.log(error)
     }
@@ -57,10 +56,10 @@ export const updateTask = async (req, res, next) => {
 
 export const deleteTask = async (req, res, next) => {
     try {
-        const deleteData = await todoModel.findByIdandDelete(req.params.id)
-        {
-            res.status(200).send(deletedTask)
-        }
+        const deleteData = await todoModel.findByIdAndDelete(req.params.id);
+        
+            res.status(200).send('Task has been deleted')
+        
     } catch (error) {
         console.log(error)
     }
